@@ -1,0 +1,57 @@
+freeStyleJob('maintenance-apply-dsl') {
+    displayName('apply-dsl')
+    description('Applies all the Jenkins DSLs in the sift-jenkins-dsl repository.')
+
+    checkoutRetryCount(3)
+
+    properties {
+        githubProjectUrl('https://github.com/ekristen/sift-jenkins-dsl')
+    }
+
+    logRotator {
+        numToKeep(100)
+        daysToKeep(15)
+    }
+
+    scm {
+        git {
+            remote {
+                url('https://github.com/ekristen/sift-jenkins-dsl.git')
+            }
+            branches('*/master')
+            extensions {
+                wipeOutWorkspace()
+                cleanAfterCheckout()
+            }
+        }
+    }
+
+    triggers {
+        githubPush()
+    }
+
+    wrappers { colorizeOutput() }
+
+    steps {
+        dsl {
+            external('**/*.groovy')
+            removeAction('DELETE')
+            removeViewAction('DELETE')
+            additionalClasspath('.')
+        }
+    }
+
+    publishers {
+        extendedEmail {
+            recipientList('$DEFAULT_RECIPIENTS')
+            contentType('text/plain')
+            triggers {
+                stillFailing {
+                    attachBuildLog(true)
+                }
+            }
+        }
+
+        wsCleanup()
+    }
+}
