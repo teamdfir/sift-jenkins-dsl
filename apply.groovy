@@ -17,6 +17,7 @@ freeStyleJob('maintenance-apply-dsl') {
         git {
             remote {
                 url('git@github.com:ekristen/sift-jenkins-dsl.git')
+                credentials('github')
             }
             branches('*/master')
             extensions {
