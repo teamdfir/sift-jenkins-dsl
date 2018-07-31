@@ -22,7 +22,7 @@ generate_dsl(){
 
 	cat <<-EOF > $file
 
-pipelineJob('sift/packages/${rname//./_}') {
+pipelineJob('sift/packages/${rname//[.-]/_}') {
   definition {
     cps {
       sandbox()
