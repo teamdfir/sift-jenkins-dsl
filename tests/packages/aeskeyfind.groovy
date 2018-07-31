@@ -1,4 +1,4 @@
-pipelineJob('aeskeyfind') {
+pipelineJob('sift/packages/aeskeyfind') {
   definition {
     cps {
       sandbox()
