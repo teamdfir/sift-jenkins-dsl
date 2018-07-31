@@ -44,18 +44,4 @@ pipelineJob('sift/packages/autopsy') {
       numToKeep(100)
       daysToKeep(15)
   }
-
-  publishers {
-      extendedEmail {
-          recipientList('$DEFAULT_RECIPIENTS')
-          contentType('text/plain')
-          triggers {
-              stillFailing {
-                  attachBuildLog(true)
-              }
-          }
-      }
-
-      wsCleanup()
-  }
 }

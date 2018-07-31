@@ -44,18 +44,4 @@ pipelineJob('sift/packages/arp_scan') {
       numToKeep(100)
       daysToKeep(15)
   }
-
-  publishers {
-      extendedEmail {
-          recipientList('$DEFAULT_RECIPIENTS')
-          contentType('text/plain')
-          triggers {
-              stillFailing {
-                  attachBuildLog(true)
-              }
-          }
-      }
-
-      wsCleanup()
-  }
 }
