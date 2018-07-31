@@ -41,7 +41,7 @@ freeStyleJob('maintenance-apply-dsl') {
             folder('sift/packages') {
               description('folder containing jobs for testing packages installed via apt for SIFT')
             }
-            external('tests/**/*.groovy')
+            external('**/*.groovy')
             removeAction('DELETE')
             removeViewAction('DELETE')
             additionalClasspath('.')
