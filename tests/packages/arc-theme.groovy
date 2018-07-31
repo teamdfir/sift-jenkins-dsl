@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.arc-theme') {
+pipelineJob('sift/packages/arc-theme') {
   definition {
     cps {
       sandbox()

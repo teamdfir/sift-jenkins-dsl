@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.apt-transport-https') {
+pipelineJob('sift/packages/apt-transport-https') {
   definition {
     cps {
       sandbox()

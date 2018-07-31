@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.aircrack-ng') {
+pipelineJob('sift/packages/aircrack-ng') {
   definition {
     cps {
       sandbox()

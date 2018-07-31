@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.arc-icons') {
+pipelineJob('sift/packages/arc-icons') {
   definition {
     cps {
       sandbox()

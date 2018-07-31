@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.afterglow') {
+pipelineJob('sift/packages/afterglow') {
   definition {
     cps {
       sandbox()

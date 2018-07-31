@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.apache2') {
+pipelineJob('sift/packages/apache2') {
   definition {
     cps {
       sandbox()

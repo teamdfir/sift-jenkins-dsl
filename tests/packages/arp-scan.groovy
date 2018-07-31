@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.arp-scan') {
+pipelineJob('sift/packages/arp-scan') {
   definition {
     cps {
       sandbox()

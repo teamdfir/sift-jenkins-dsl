@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.afflib-tools') {
+pipelineJob('sift/packages/afflib-tools') {
   definition {
     cps {
       sandbox()

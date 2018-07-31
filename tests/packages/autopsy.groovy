@@ -1,5 +1,5 @@
 
-pipelineJob('sift.packages.autopsy') {
+pipelineJob('sift/packages/autopsy') {
   definition {
     cps {
       sandbox()
