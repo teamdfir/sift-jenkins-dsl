@@ -37,7 +37,7 @@ pipelineJob('sift/packages/cifs_utils') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

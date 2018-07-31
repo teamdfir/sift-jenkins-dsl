@@ -37,7 +37,7 @@ pipelineJob('sift/packages/ccrypt') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

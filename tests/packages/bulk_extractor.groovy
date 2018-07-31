@@ -37,7 +37,7 @@ pipelineJob('sift/packages/bulk_extractor') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

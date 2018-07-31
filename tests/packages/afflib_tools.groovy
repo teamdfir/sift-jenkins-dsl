@@ -37,7 +37,7 @@ pipelineJob('sift/packages/afflib_tools') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

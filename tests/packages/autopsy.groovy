@@ -37,7 +37,7 @@ pipelineJob('sift/packages/autopsy') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

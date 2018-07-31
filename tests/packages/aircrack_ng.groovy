@@ -37,7 +37,7 @@ pipelineJob('sift/packages/aircrack_ng') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

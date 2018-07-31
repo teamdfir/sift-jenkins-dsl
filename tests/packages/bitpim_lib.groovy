@@ -37,7 +37,7 @@ pipelineJob('sift/packages/bitpim_lib') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

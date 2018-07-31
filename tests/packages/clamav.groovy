@@ -37,7 +37,7 @@ pipelineJob('sift/packages/clamav') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

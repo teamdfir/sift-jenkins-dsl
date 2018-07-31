@@ -37,7 +37,7 @@ pipelineJob('sift/packages/afterglow') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

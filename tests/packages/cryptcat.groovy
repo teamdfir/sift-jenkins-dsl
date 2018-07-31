@@ -37,7 +37,7 @@ pipelineJob('sift/packages/cryptcat') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

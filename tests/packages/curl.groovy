@@ -37,7 +37,7 @@ pipelineJob('sift/packages/curl') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

@@ -37,7 +37,7 @@ pipelineJob('sift/packages/dconf_tools') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

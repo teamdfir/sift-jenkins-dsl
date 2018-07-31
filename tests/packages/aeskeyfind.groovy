@@ -37,7 +37,7 @@ pipelineJob('sift/packages/aeskeyfind') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

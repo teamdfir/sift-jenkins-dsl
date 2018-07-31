@@ -37,7 +37,7 @@ pipelineJob('sift/packages/docker_engine') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

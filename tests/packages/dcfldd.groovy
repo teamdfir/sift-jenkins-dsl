@@ -37,7 +37,7 @@ pipelineJob('sift/packages/dcfldd') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

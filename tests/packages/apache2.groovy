@@ -37,7 +37,7 @@ pipelineJob('sift/packages/apache2') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {

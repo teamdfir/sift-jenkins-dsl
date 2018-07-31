@@ -37,7 +37,7 @@ pipelineJob('sift/packages/arp_scan') {
   }
 
   triggers {
-      cron('@daily')
+      cron('H H * * *')
   }
 
   logRotator {
