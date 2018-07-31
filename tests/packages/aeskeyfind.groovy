@@ -1,4 +1,5 @@
-pipelineJob('sift/packages/aeskeyfind') {
+
+pipelineJob('sift.packages.aeskeyfind') {
   definition {
     cps {
       sandbox()
@@ -56,5 +57,3 @@ pipelineJob('sift/packages/aeskeyfind') {
       wsCleanup()
   }
 }
-
-
