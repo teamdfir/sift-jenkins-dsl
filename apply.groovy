@@ -47,18 +47,4 @@ freeStyleJob('maintenance-apply-dsl') {
             additionalClasspath('.')
         }
     }
-
-    publishers {
-        extendedEmail {
-            recipientList('$DEFAULT_RECIPIENTS')
-            contentType('text/plain')
-            triggers {
-                stillFailing {
-                    attachBuildLog(true)
-                }
-            }
-        }
-
-        wsCleanup()
-    }
 }

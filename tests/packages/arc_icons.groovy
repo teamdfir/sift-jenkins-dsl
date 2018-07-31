@@ -37,7 +37,7 @@ pipelineJob('sift/packages/arc_icons') {
   }
 
   triggers {
-      cron('@weekly')
+      cron('@daily')
   }
 
   logRotator {

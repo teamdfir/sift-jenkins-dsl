@@ -37,7 +37,7 @@ pipelineJob('sift/packages/blt') {
   }
 
   triggers {
-      cron('@weekly')
+      cron('@daily')
   }
 
   logRotator {

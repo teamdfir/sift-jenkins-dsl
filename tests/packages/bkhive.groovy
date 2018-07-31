@@ -37,7 +37,7 @@ pipelineJob('sift/packages/bkhive') {
   }
 
   triggers {
-      cron('@weekly')
+      cron('@daily')
   }
 
   logRotator {

@@ -37,7 +37,7 @@ pipelineJob('sift/packages/build_essential') {
   }
 
   triggers {
-      cron('@weekly')
+      cron('@daily')
   }
 
   logRotator {

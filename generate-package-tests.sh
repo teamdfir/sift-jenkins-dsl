@@ -60,7 +60,7 @@ pipelineJob('sift/packages/${rname//[.-]/_}') {
   }
 
   triggers {
-      cron('@weekly')
+      cron('@daily')
   }
 
   logRotator {

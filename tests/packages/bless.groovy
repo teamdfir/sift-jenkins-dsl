@@ -37,7 +37,7 @@ pipelineJob('sift/packages/bless') {
   }
 
   triggers {
-      cron('@weekly')
+      cron('@daily')
   }
 
   logRotator {

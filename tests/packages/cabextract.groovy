@@ -37,7 +37,7 @@ pipelineJob('sift/packages/cabextract') {
   }
 
   triggers {
-      cron('@weekly')
+      cron('@daily')
   }
 
   logRotator {
