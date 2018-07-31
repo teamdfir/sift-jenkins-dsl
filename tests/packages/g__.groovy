@@ -1,5 +1,5 @@
 
-pipelineJob('sift/packages/g++') {
+pipelineJob('sift/packages/g__') {
   definition {
     cps {
       sandbox()

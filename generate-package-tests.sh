@@ -16,13 +16,13 @@ generate_dsl(){
   name=$(basename $name)
 
   rname=${name//.sls/}
-	file="${DIR}/tests/packages/${rname//[.-]/_}.groovy"
+	file="${DIR}/tests/packages/${rname//[\+.-]/_}.groovy"
 
 	echo "-  ${file} == ${rname}"
 
 	cat <<-EOF > $file
 
-pipelineJob('sift/packages/${rname//[.-]/_}') {
+pipelineJob('sift/packages/${rname//[\+.-]/_}') {
   definition {
     cps {
       sandbox()
