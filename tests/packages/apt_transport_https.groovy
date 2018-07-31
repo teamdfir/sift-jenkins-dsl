@@ -36,6 +36,10 @@ pipelineJob('sift/packages/apt_transport_https') {
     }
   }
 
+  triggers {
+      cron('@weekly')
+  }
+
   logRotator {
       numToKeep(100)
       daysToKeep(15)

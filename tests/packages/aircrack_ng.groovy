@@ -36,6 +36,10 @@ pipelineJob('sift/packages/aircrack_ng') {
     }
   }
 
+  triggers {
+      cron('@weekly')
+  }
+
   logRotator {
       numToKeep(100)
       daysToKeep(15)

@@ -36,6 +36,10 @@ pipelineJob('sift/packages/arp_scan') {
     }
   }
 
+  triggers {
+      cron('@weekly')
+  }
+
   logRotator {
       numToKeep(100)
       daysToKeep(15)

@@ -59,6 +59,10 @@ pipelineJob('sift/packages/${rname//[.-]/_}') {
     }
   }
 
+  triggers {
+      cron('@weekly')
+  }
+
   logRotator {
       numToKeep(100)
       daysToKeep(15)
@@ -82,7 +86,7 @@ EOF
 
 }
 
-packages=$(ls ../sift-saltstack/sift/packages/*.sls | head -n 10)
+packages=$(ls ../sift-saltstack/sift/packages/*.sls | head -n 20)
 
 main(){
 	mkdir -p $DIR/tests/packages

@@ -1,5 +1,5 @@
 
-pipelineJob('sift/packages/afflib_tools') {
+pipelineJob('sift/packages/bless') {
   definition {
     cps {
       sandbox()
@@ -26,7 +26,7 @@ pipelineJob('sift/packages/afflib_tools') {
                 stage('Test State') {
                     steps {
                         container('dind') {
-                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.packages.afflib-tools"
+                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.packages.bless"
                         }
                     }
                 }
