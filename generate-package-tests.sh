@@ -16,7 +16,7 @@ generate_dsl(){
   name=$(basename $name)
 
   rname=${name//.sls/}
-	file="${DIR}/tests/packages/${rname}.groovy"
+	file="${DIR}/tests/packages/${rname//[.-]/_}.groovy"
 
 	echo "-  ${file} == ${rname}"
 
