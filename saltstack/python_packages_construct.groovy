@@ -26,7 +26,7 @@ pipelineJob('sift/saltstack/construct') {
                 stage('Test State') {
                     steps {
                         container('dind') {
-                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.python_packages.construct"
+                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.python-packages.construct"
                         }
                     }
                 }

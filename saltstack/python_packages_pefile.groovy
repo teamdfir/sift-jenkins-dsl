@@ -26,7 +26,7 @@ pipelineJob('sift/saltstack/pefile') {
                 stage('Test State') {
                     steps {
                         container('dind') {
-                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.python_packages.pefile"
+                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.python-packages.pefile"
                         }
                     }
                 }

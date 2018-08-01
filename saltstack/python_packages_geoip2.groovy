@@ -26,7 +26,7 @@ pipelineJob('sift/saltstack/geoip2') {
                 stage('Test State') {
                     steps {
                         container('dind') {
-                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.python_packages.geoip2"
+                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.python-packages.geoip2"
                         }
                     }
                 }
