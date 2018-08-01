@@ -44,4 +44,17 @@ pipelineJob('sift/packages/libevtx_tools') {
       numToKeep(100)
       daysToKeep(15)
   }
+  
+  publishers {
+      extendedEmail {
+          recipientList('')
+          contentType('text/plain')
+          triggers {
+              stillFailing {
+                    attachBuildLog(true)
+              }
+          }
+      }
+      wsCleanup()
+  }
 }
