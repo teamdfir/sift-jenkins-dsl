@@ -38,7 +38,7 @@ freeStyleJob('maintenance-apply-dsl') {
             folder('sift') {
               description('folder for SIFT related tests')
             }
-            folder('sift/packages') {
+            folder('sift/saltstack') {
               description('folder containing jobs for testing packages installed via apt for SIFT')
             }
             external('**/*.groovy')
