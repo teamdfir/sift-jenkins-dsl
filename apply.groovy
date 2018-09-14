@@ -5,7 +5,7 @@ freeStyleJob('maintenance-apply-dsl') {
     checkoutRetryCount(3)
 
     properties {
-        githubProjectUrl('git@github.com:ekristen/sift-jenkins-dsl.git')
+        githubProjectUrl('https://github.com/ekristen/sift-jenkins-dsl.git')
     }
 
     logRotator {
@@ -16,8 +16,7 @@ freeStyleJob('maintenance-apply-dsl') {
     scm {
         git {
             remote {
-                url('git@github.com:ekristen/sift-jenkins-dsl.git')
-                credentials('github')
+                url('https://github.com/ekristen/sift-jenkins-dsl.git')
             }
             branches('*/master')
             extensions {
