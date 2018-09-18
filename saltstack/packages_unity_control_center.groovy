@@ -16,7 +16,7 @@ pipelineJob('sift/saltstack/unity_control_center') {
                         git "https://github.com/sans-dfir/sift-saltstack.git"
                     }
                 }
-                stage('Fetch Docker Testing Image') {
+                stage('Fetch Testing Image') {
                     steps {
                         container('dind') {
                             sh "docker pull sansdfir/sift-salt-tester"
@@ -37,7 +37,7 @@ pipelineJob('sift/saltstack/unity_control_center') {
   }
 
   triggers {
-      cron('H H * * *')
+      cron('W W * * *')
   }
 
   logRotator {

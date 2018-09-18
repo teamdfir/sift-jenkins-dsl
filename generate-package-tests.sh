@@ -8,7 +8,8 @@ set -o pipefail
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
 generate_dsl(){
-	local orig=$1
+  local prefix=${1}
+	local orig=$2
 	local name=${orig#*/}
 
 	local image=${name}
@@ -16,13 +17,13 @@ generate_dsl(){
   name=$(basename $name)
 
   rname=${name//.sls/}
-	file="${DIR}/tests/packages/${rname//[\+.-]/_}.groovy"
+	file="${DIR}/saltstack/${prefix//-/_}_${rname//[\+.-]/_}.groovy"
 
 	echo "-  ${file} == ${rname}"
 
 	cat <<-EOF > $file
 
-pipelineJob('sift/packages/${rname//[\+.-]/_}') {
+pipelineJob('sift/saltstack/${rname//[\+.-]/_}') {
   definition {
     cps {
       sandbox()
@@ -39,7 +40,7 @@ pipelineJob('sift/packages/${rname//[\+.-]/_}') {
                         git "https://github.com/sans-dfir/sift-saltstack.git"
                     }
                 }
-                stage('Fetch Docker Testing Image') {
+                stage('Fetch Testing Image') {
                     steps {
                         container('dind') {
                             sh "docker pull sansdfir/sift-salt-tester"
@@ -49,7 +50,7 @@ pipelineJob('sift/packages/${rname//[\+.-]/_}') {
                 stage('Test State') {
                     steps {
                         container('dind') {
-                            sh "docker run --rm --cap-add SYS_ADMIN -v \`pwd\`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.packages.$rname"
+                            sh "docker run --rm --cap-add SYS_ADMIN -v \`pwd\`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.$prefix.$rname"
                         }
                     }
                 }
@@ -60,26 +61,50 @@ pipelineJob('sift/packages/${rname//[\+.-]/_}') {
   }
 
   triggers {
-      cron('H H * * *')
+      cron('W W * * *')
   }
 
   logRotator {
       numToKeep(100)
       daysToKeep(15)
   }
+  
+  publishers {
+      extendedEmail {
+          recipientList('$DEFAULT_RECIPIENTS')
+          contentType('text/plain')
+          triggers {
+              stillFailing {
+                    attachBuildLog(true)
+              }
+          }
+      }
+      wsCleanup()
+  }
 }
 EOF
 
 }
 
-packages=$(ls ../sift-saltstack/sift/packages/*.sls)
+packages=$(ls ../sift-saltstack/sift/packages/*.sls | grep -v init.sls)
+python_packages=$(ls ../sift-saltstack/sift/python-packages/*.sls | grep -v init.sls)
+scripts=$(ls ../sift-saltstack/sift/scripts/*.sls | grep -v init.sls)
 
 main(){
-	mkdir -p $DIR/tests/packages
+	mkdir -p $DIR/saltstack
+  rm -f $DIR/saltstack/*.groovy
 	echo "FILE | IMAGE"
 
 	for r in $packages; do
-    generate_dsl "${r}"
+    generate_dsl "packages" "${r}"
+	done
+
+	for r in $python_packages; do
+    generate_dsl "python-packages" "${r}"
+	done
+
+	for r in $scripts; do
+    generate_dsl "scripts" "${r}"
 	done
 }
 

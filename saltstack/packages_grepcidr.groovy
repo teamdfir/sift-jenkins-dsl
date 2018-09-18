@@ -1,5 +1,5 @@
 
-pipelineJob('sift/saltstack/libncurses') {
+pipelineJob('sift/saltstack/grepcidr') {
   definition {
     cps {
       sandbox()
@@ -26,7 +26,7 @@ pipelineJob('sift/saltstack/libncurses') {
                 stage('Test State') {
                     steps {
                         container('dind') {
-                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.packages.libncurses"
+                            sh "docker run --rm --cap-add SYS_ADMIN -v `pwd`/sift:/srv/salt/sift sansdfir/sift-salt-tester salt-call --local --retcode-passthrough --state-output=mixed state.sls sift.packages.grepcidr"
                         }
                     }
                 }
