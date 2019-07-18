@@ -91,8 +91,8 @@ packages=$(ls ../sift-saltstack/sift/packages/*.sls | grep -v init.sls)
 python_packages=$(ls ../sift-saltstack/sift/python-packages/*.sls | grep -v init.sls)
 scripts=$(ls ../sift-saltstack/sift/scripts/*.sls | grep -v init.sls)
 
-distros="bionic
-xenial"
+distros="18.04-bionic
+16.04-xenial"
 
 main(){
   for d in $distros; do

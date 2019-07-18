@@ -37,8 +37,11 @@ freeStyleJob('maintenance-apply-dsl') {
             folder('sift') {
               description('folder for SIFT related tests')
             }
-            folder('sift/saltstack') {
-              description('folder containing jobs for testing packages installed via apt for SIFT')
+            folder('sift/16.04-xenial') {
+              description('folder containing jobs for testing packages installed via apt for SIFT on Xenial')
+            }
+            folder('sift/18.04-bionic') {
+              description('folder containing jobs for testing packages installed via apt for SIFT on Xenial')
             }
             external('**/*.groovy')
             removeAction('DELETE')
